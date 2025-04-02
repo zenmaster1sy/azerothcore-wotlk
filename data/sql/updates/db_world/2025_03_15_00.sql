@@ -1,5 +1,16 @@
--- DB update 2025_03_13_00 -> 2025_03_15_00
---
--- SPELL_ATTR0_CU_ONLY_ONE_AREA_AURA 45402 Demonic Vapor
-DELETE FROM `spell_custom_attr` WHERE `spell_id` = 45402;
-INSERT INTO `spell_custom_attr` (`spell_id`, `attributes`) VALUES(45402, 536870912);
+DROP USER IF EXISTS 'acore'@'localhost';
+CREATE USER 'acore'@'localhost' IDENTIFIED BY 'acore' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0;
+
+GRANT ALL PRIVILEGES ON * . * TO 'acore'@'localhost' WITH GRANT OPTION;
+
+CREATE DATABASE `acore_world` DEFAULT CHARACTER SET UTF8MB4 COLLATE utf8mb4_unicode_ci;
+
+CREATE DATABASE `acore_characters` DEFAULT CHARACTER SET UTF8MB4 COLLATE utf8mb4_unicode_ci;
+
+CREATE DATABASE `acore_auth` DEFAULT CHARACTER SET UTF8MB4 COLLATE utf8mb4_unicode_ci;
+
+GRANT ALL PRIVILEGES ON `acore_world` . * TO 'acore'@'localhost' WITH GRANT OPTION;
+
+GRANT ALL PRIVILEGES ON `acore_characters` . * TO 'acore'@'localhost' WITH GRANT OPTION;
+
+GRANT ALL PRIVILEGES ON `acore_auth` . * TO 'acore'@'localhost' WITH GRANT OPTION;
